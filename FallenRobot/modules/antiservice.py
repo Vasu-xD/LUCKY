@@ -1,6 +1,6 @@
 from pyrogram import filters
 
-from FallenRobot import app
+from FallenRobot import pbot
 from FallenRobot.core.decorators.permissions import adminsOnly
 from FallenRobot.utils.dbfunctions import (
     antiservice_off,
@@ -15,7 +15,7 @@ Plugin to delete service messages in a chat!
 """
 
 
-@app.on_message(filters.command("antiservice") & ~filters.private)
+@pbot.on_message(filters.command("antiservice") & ~filters.private)
 @adminsOnly("can_change_info")
 async def anti_service(_, message):
     if len(message.command) != 2:
@@ -41,7 +41,7 @@ async def anti_service(_, message):
         )
 
 
-@app.on_message(filters.service, group=11)
+@pbot.on_message(filters.service, group=11)
 async def delete_service(_, message):
     chat_id = message.chat.id
     try:

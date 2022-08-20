@@ -2,7 +2,7 @@ from pyrogram import filters
 
 from FallenRobot import pbot
 from FallenRobot.core.decorators.permissions import adminsOnly
-from FallenRobot.utils.adminperms import (
+from FallenRobot.modules.helper_funcs.admin_rights import (
     antiservice_off,
     antiservice_on,
     is_antiservice_on,

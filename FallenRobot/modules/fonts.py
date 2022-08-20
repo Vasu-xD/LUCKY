@@ -486,7 +486,7 @@ __help__ = """
  ❍ /latin *:* ᴄʜᴀɴɢᴇ ᴛʜᴇ ᴛᴇxᴛ ɪɴᴛᴏ ʟᴀᴛɪɴ ᴛᴇxᴛ.
  ❍ /lined *:* ᴄʜᴀɴɢᴇ ᴛʜᴇ ᴛᴇxᴛ ɪɴᴛᴏ ʟɪɴᴇᴅ ᴛᴇxᴛ.
  """
-__mod_name__ = "Fᴏɴᴛ Eᴅɪᴛᴏʀ ✍🏻"
+__mod_name__ = "Fᴏɴᴛꜱ ✍🏻"
 
 LUCKY_HANDLER = DisableAbleCommandHandler("lucky", lucky)
 BUBBLE_HANDLER = DisableAbleCommandHandler("bubble", bubble)

@@ -500,13 +500,13 @@ def __user_info__(user_id):
     if int(user_id) in DRAGONS + TIGERS + WOLVES:
         return ""
     if is_gbanned:
-        text = text.format("Yes")
+        text = text.format("ʏᴇs")
         user = sql.get_gbanned_user(user_id)
         if user.reason:
             text += f"\n<b>Reason:</b> <code>{html.escape(user.reason)}</code>"
         text += f"\n<b>Appeal Chat:</b> @{SUPPORT_CHAT}"
     else:
-        text = text.format("???")
+        text = text.format("ɴᴏ")
     return text
 
 
@@ -531,7 +531,7 @@ dispatcher.add_handler(UNGBAN_HANDLER)
 dispatcher.add_handler(GBAN_LIST)
 dispatcher.add_handler(GBAN_STATUS)
 
-__mod_name__ = "Aɴᴛɪ-Sᴘᴀᴍ​ 😪"
+__mod_name__ = "Sᴘᴀᴍ ♦️​"
 __handlers__ = [GBAN_HANDLER, UNGBAN_HANDLER, GBAN_LIST, GBAN_STATUS]
 
 if STRICT_GBAN:  # enforce GBANS if this is set

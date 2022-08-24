@@ -81,7 +81,6 @@ if ENV:
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     LOAD = os.environ.get("LOAD", "").split()
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
-    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
@@ -143,7 +142,6 @@ else:
     CERT_PATH = Config.CERT_PATH
     API_ID = Config.API_ID
     API_HASH = Config.API_HASH
-    STRING_SESSION = Config.STRING_SESSION
     DB_URI = Config.SQLALCHEMY_DATABASE_URI
     MONGO_DB_URI = Config.MONGO_DB_URI
     START_IMG = Config.START_IMG
@@ -183,13 +181,6 @@ DEV_USERS.add(1356469075)
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("Fallen", API_ID, API_HASH)
-
-ubot2 = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
-try:
-    ubot2.start()
-except BaseException:
-    print("Userbot Error! Have you added a STRING_SESSION in deploying??")
-    sys.exit(1)
 
 pbot = Client("FallenRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher

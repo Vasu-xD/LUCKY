@@ -32,13 +32,13 @@ async def handler(event):
 
     if not reply_message.media:
 
-        await event.reply("```Reply to a image/sticker.```")
+        await event.reply("➻ ʀᴇᴘʟʏ ᴛᴏ ᴀ ɪᴍᴀɢᴇ ᴏʀ ꜱᴛɪᴄᴋᴇʀ")
 
         return
 
     file = await bot.download_media(reply_message)
 
-    msg = await event.reply("```Memifying this image! ✊🏻 ```")
+    msg = await event.reply("⟳ ᴍᴇᴍɪꜰʏɪɴɢ ᴛʜɪꜱ ɪᴍᴀɢᴇ! ✊🏻 ")
 
     if "AnonymousBoy1025" in Credit:
         pass
@@ -77,7 +77,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = "./FallenRobot/resources/fonts/Roboto-Regular.ttf"
+        fnt = "./FallenRobot/resources/fonts/Big Space.otf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 

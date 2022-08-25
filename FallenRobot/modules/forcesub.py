@@ -2,10 +2,16 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from FallenRobot.admin_check import admin_check
 from pyrogram.errors import UsernameInvalid, PeerIdInvalid, UserNotParticipant
-from FallenRobot.modules.sql.chats_sql import get_force_chat, change_force_chat, get_only_owner
+from FallenRobot.modules.sql.chats_sql import (
+    get_force_chat,
+    change_force_chat,
+    get_only_owner,
+)
 
 
-@Client.on_message(filters.text & filters.incoming & filters.command(["fsub", "forcesubscribe"]))
+@Client.on_message(
+    filters.text & filters.incoming & filters.command(["fsub", "forcesubscribe"])
+)
 async def fsub(bot, msg: Message):
     chat_id = msg.chat.id
     bot_id = (await bot.get_me()).id
@@ -16,15 +22,28 @@ async def fsub(bot, msg: Message):
         force_chat = await get_force_chat(chat_id)
         if force_chat:
             chat = await bot.get_chat(force_chat)
-            mention = '@' + chat.username if chat.username else f"{chat.title} ({chat.id})"
-            await msg.reply(f"**ᴄᴜʀʀᴇɴᴛ ғᴏʀᴄᴇ sᴜʙsʀɪʙᴇ ᴄʜᴀᴛ ** ɪs: {mention} \n\nᴄᴏᴜʟᴅ ʙᴇ ᴄʜᴀɴɢᴇᴅ ᴜsɪɴɢ `/forcesubscribe new_chat_id`")
+            mention = (
+                "@" + chat.username if chat.username else f"{chat.title} ({chat.id})"
+            )
+            await msg.reply(
+                f"**ᴄᴜʀʀᴇɴᴛ ғᴏʀᴄᴇ sᴜʙsʀɪʙᴇ ᴄʜᴀᴛ ** ɪs: {mention} \n\nᴄᴏᴜʟᴅ ʙᴇ ᴄʜᴀɴɢᴇᴅ ᴜsɪɴɢ `/forcesubscribe new_chat_id`"
+            )
         else:
-            await msg.reply("ɴᴏ ғᴏʀᴄᴇ sᴜʙsʀɪʙᴇ ᴄʜᴀᴛ sᴇᴛ•! \n\nᴄᴏᴜʟᴅ ʙᴇ sᴇᴛ ᴜsɪɴɢ `/forcesubscribe chat_id`")
+            await msg.reply(
+                "ɴᴏ ғᴏʀᴄᴇ sᴜʙsʀɪʙᴇ ᴄʜᴀᴛ sᴇᴛ•! \n\nᴄᴏᴜʟᴅ ʙᴇ sᴇᴛ ᴜsɪɴɢ `/forcesubscribe chat_id`"
+            )
     else:
-        creator = True if (await bot.get_chat_member(chat_id, msg.from_user.id)).status == "creator" else False
+        creator = (
+            True
+            if (await bot.get_chat_member(chat_id, msg.from_user.id)).status
+            == "creator"
+            else False
+        )
         only_owner = await get_only_owner(chat_id)
         if only_owner and not creator:
-            await msg.reply("ᴏɴʟʏ ᴏᴡɴᴇʀ ᴄᴀɴ ᴄʜᴀɴɢᴇ ғᴏʀᴄᴇ sᴜʙsʀɪʙᴇ ᴄʜᴀᴛ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ ʙᴀʙʏ.")
+            await msg.reply(
+                "ᴏɴʟʏ ᴏᴡɴᴇʀ ᴄᴀɴ ᴄʜᴀɴɢᴇ ғᴏʀᴄᴇ sᴜʙsʀɪʙᴇ ᴄʜᴀᴛ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ ʙᴀʙʏ."
+            )
             return
         to_be_chat = msg.command[1]
         try:
@@ -49,6 +68,10 @@ async def fsub(bot, msg: Message):
         if bot_chat_member.status == "administrator":
             to_be_chat_id = (await bot.get_chat(to_be_chat)).id
             await change_force_chat(chat_id, to_be_chat_id)
-            await msg.reply("sᴜᴄᴇssғᴜʟ. Nᴏᴡ ɪ'ʟʟ ᴍᴜᴛᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴏ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ ᴛʜᴀᴛ ᴄʜᴀᴛ ʙᴀʙʏ . \n\nᴜsᴇ  /settings ᴛᴏ ᴄʜᴀɴɢᴇ sᴇᴛᴛɪɴɢs.")
+            await msg.reply(
+                "sᴜᴄᴇssғᴜʟ. Nᴏᴡ ɪ'ʟʟ ᴍᴜᴛᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴏ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ ᴛʜᴀᴛ ᴄʜᴀᴛ ʙᴀʙʏ . \n\nᴜsᴇ  /settings ᴛᴏ ᴄʜᴀɴɢᴇ sᴇᴛᴛɪɴɢs."
+            )
         else:
-            await msg.reply("ᴘʟᴇᴀsᴇ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴛʜᴇʀᴇ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ʙᴀʙʏ ᴠɪsɪᴛ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ @the_support_chat !")
+            await msg.reply(
+                "ᴘʟᴇᴀsᴇ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴛʜᴇʀᴇ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ʙᴀʙʏ ᴠɪsɪᴛ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ @the_support_chat !"
+            )

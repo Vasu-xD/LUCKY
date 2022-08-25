@@ -4,14 +4,21 @@ from . import BASE, SESSION
 
 class Chats(BASE):
     __tablename__ = "chats"
-    __table_args__ = {'extend_existing': True}
+    __table_args__ = {"extend_existing": True}
     channel_id = Column(BigInteger, primary_key=True)
     force_chat = Column(BigInteger)
     action = Column(String)
     ignore_service = Column(Boolean)
     only_owner = Column(Boolean)
 
-    def __init__(self, channel_id, force_chat, action='mute', ignore_service=True, only_owner=True):
+    def __init__(
+        self,
+        channel_id,
+        force_chat,
+        action="mute",
+        ignore_service=True,
+        only_owner=True,
+    ):
         self.channel_id = channel_id
         self.force_chat = force_chat
         self.action = action

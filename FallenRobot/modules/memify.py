@@ -67,7 +67,7 @@ async def drawText(image_path, text):
 
     os.remove(image_path)
 
-    shadowcolor = "black"
+    shadowcolor = "white"
 
     i_width, i_height = img.size
 
@@ -79,7 +79,7 @@ async def drawText(image_path, text):
 
         fnt = "./FallenRobot/resources/fonts/Big Space.otf"
 
-    m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
+    m_font = ImageFont.truetype(fnt, int((90 / 640) * i_width))
 
     if ";" in text:
 

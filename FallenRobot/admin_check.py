@@ -3,7 +3,10 @@ async def admin_check(bot, msg, user_id=None, callback_query=None):
         user_id = msg.from_user.id
     bot_id = (await bot.get_me()).id
     if msg.chat.type not in ["supergroup", "group"]:
-        await msg.reply(" ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ɪɴ ɢʀᴏᴜᴘs  ʙᴀʙʏ ᴀᴅᴅ ᴍᴇ ɪɴ ɢʀᴏᴜᴘ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ!", quote=True)
+        await msg.reply(
+            " ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ɪɴ ɢʀᴏᴜᴘs  ʙᴀʙʏ ᴀᴅᴅ ᴍᴇ ɪɴ ɢʀᴏᴜᴘ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ!",
+            quote=True,
+        )
         return False
     chat_member = await msg.chat.get_member(user_id)
     bot_chat_member = await msg.chat.get_member(bot_id)

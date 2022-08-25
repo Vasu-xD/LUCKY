@@ -9,9 +9,7 @@ from FallenRobot.modules.sql.chats_sql import (
 )
 
 
-@Client.on_message(
-    filters.text & filters.incoming & filters.command(["fsub", "forcesubscribe"])
-)
+@Client.on_message(filters.command("fsub"))
 async def fsub(bot, msg: Message):
     chat_id = msg.chat.id
     bot_id = (await bot.get_me()).id

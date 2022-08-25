@@ -4,10 +4,6 @@ import textwrap
 
 import os
 
-import random
-
-import glob
-
 from FallenRobot.events import register
 
 from FallenRobot import LOGGER, TEMP_DOWNLOAD_DIRECTORY
@@ -81,8 +77,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = glob.glob("./FallenRobot/resources/fonts/*")
-        randf = random.choice(fnt)
+        fnt = "./FallenRobot/resources/Big Space.otf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 

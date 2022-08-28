@@ -39,7 +39,7 @@ pyrate-limiter
 pykeyboard
 pynewtonmath
 pyrogram==2.0.41
-python-telegram-bot==13.13
+python-telegram-bot==12.8
 regex
 requests
 secureme

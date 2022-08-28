@@ -3,9 +3,9 @@ lxml
 wget
 beautifulsoup4
 requests
-python-telegram-bot==12.8
+python-telegram-bot
 youtube_search_python
-sqlalchemy==1.4.40
+sqlalchemy
 PyDictionary
 psycopg2-binary
 feedparser
@@ -20,7 +20,7 @@ aiohttp>=2.2.5
 Pillow
 CurrencyConverter
 jikanpy
-emoji==2.0.0
+emoji
 speedtest-cli
 regex
 bleach

@@ -887,18 +887,16 @@ def main():
         try:
             dispatcher.bot.sendAnimation(
                 f"@{SUPPORT_CHAT}",
-                animation="https://telegra.ph/file/38091db0a04a50d938db6.mp4",
+                animation="https://telegra.ph/file/bd0a73ee006abde983a75.mp4",
                 caption=f"""
-ㅤㅤ🥀 {dispatcher.bot.first_name} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
+🥀 {dispatcher.bot.first_name} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
 ━━━━━━━━━━━━━
 ㅤ๏ **ᴘʏᴛʜᴏɴ :** `{y()}`
 ㅤ๏ **ʟɪʙʀᴀʀʏ :** `{telever}`
 ㅤ๏ **ᴛᴇʟᴇᴛʜᴏɴ :** `{tlhver}`
 ㅤ๏ **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
-━━━━━━━━━━━━━
-
-ᴍᴀᴅᴇ ᴡɪᴛʜ 🖤 ʙʏ [𝐋 𝐔 𝐂 𝐊 𝐘](https://t.me/{OWNER_USERNAME})""",
+━━━━━━━━━━━━━""",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:

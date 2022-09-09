@@ -178,19 +178,19 @@ DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(1356469075)
 
-#BOT INFO
-dispatcher = updater.dispatcher
-BOT_ID = dispatcher.bot.id
-BOT_NAME = dispatcher.bot.first_name
-BOT_USERNAME = dispatcher.bot.username
-
-
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("Fallen", API_ID, API_HASH)
 
 pbot = Client("FallenRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 aiohttpsession = ClientSession()
+
+#BOT INFO
+dispatcher = updater.dispatcher
+BOT_ID = dispatcher.bot.id
+BOT_NAME = dispatcher.bot.first_name
+BOT_USERNAME = dispatcher.bot.username
+
 
 # ARQ Client
 print("[INFO]: INITIALIZING ARQ CLIENT...")

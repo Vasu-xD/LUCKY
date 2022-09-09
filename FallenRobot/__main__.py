@@ -86,11 +86,7 @@ PM_START_TEXT = """
 
 *๏ ᴛʜɪs ɪs* {dispatcher.bot.first_name} !
 ➻ *ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ*
-────────────────────
-   ➻ ᴜᴩᴛɪᴍᴇ » {}
-   ➻ ᴜsᴇʀs » {}
-   ➻ ᴄʜᴀᴛs » {}
-────────────────────
+
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ
  ᴄᴏᴍᴍᴀɴᴅs.*
 """
@@ -235,9 +231,6 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_text(
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats(),
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,

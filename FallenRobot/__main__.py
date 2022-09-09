@@ -92,14 +92,20 @@ PM_START_TEXT = """
 
 buttons = [
     [
+        InlineKeyboardButton("🎧", callback_data="Music_"),
+        InlineKeyboardButton("🛡️", callback_data="source_"),
+        InlineKeyboardButton("🖤", callback_data="fallen_"),
+        InlineKeyboardButton("🐥", callback_data="fallen_support"),
+    ],
+    [
         InlineKeyboardButton(
             text="ᴀᴅᴅ ᴍᴇ ᴇʟsᴇ ʏᴏᴜ ɢᴇʏ",
             url=f"https://t.me/{dispatcher.bot.username}?startgroup=true",
         ),
     ],
     [
-        InlineKeyboardButton(text="⍟ ᴀʙᴏᴜᴛ ⍟", callback_data="fallen_"),
-        InlineKeyboardButton(text="⍟ ᴍᴜꜱɪᴄ ⍟", callback_data="Music_"),
+        InlineKeyboardButton(text="⍟ ꜱᴜᴘᴘᴏʀᴛ ⍟", url=f"https://t.me/lobe_ju"),
+        InlineKeyboardButton(text="⍟ ᴜᴘᴅᴀᴛᴇꜱ ⍟", url=f"https://t.me/oye_golgappu"),
     ],
     [
         InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
@@ -448,6 +454,30 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
             disable_web_page_preview=False,
+        )
+
+@run_async
+def source_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "source_":
+        query.message.edit_text(
+            text=f"""
+*ʜᴇʏ,
+ ᴛʜɪs ɪs {BOT_NAME},
+ᴀɴ ᴏᴩᴇɴ sᴏᴜʀᴄᴇ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ.*
+ᴡʀɪᴛᴛᴇɴ ɪɴ ᴩʏᴛʜᴏɴ ᴡɪᴛʜ ᴛʜᴇ ʜᴇʟᴩ ᴏғ : [ᴛᴇʟᴇᴛʜᴏɴ](https://github.com/LonamiWebs/Telethon)
+[ᴩʏʀᴏɢʀᴀᴍ](https://github.com/pyrogram/pyrogram)
+[ᴩʏᴛʜᴏɴ-ᴛᴇʟᴇɢʀᴀᴍ-ʙᴏᴛ](https://github.com/python-telegram-bot/python-telegram-bot)
+ᴀɴᴅ ᴜsɪɴɢ [sǫʟᴀʟᴄʜᴇᴍʏ](https://www.sqlalchemy.org) ᴀɴᴅ [ᴍᴏɴɢᴏ](https://cloud.mongodb.com) ᴀs ᴅᴀᴛᴀʙᴀsᴇ.
+*ʜᴇʀᴇ ɪs ᴍʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ :* [ɢɪᴛʜᴜʙ](https://github.com/MRLUCKYXD/LUCKY-ROBOT)
+{BOT_NAME} ɪs ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ [ᴍɪᴛ ʟɪᴄᴇɴsᴇ](https://github.com/MRLUCKYXD/LUCKY-ROBOT/blob/master/LICENSE).
+© 2022 - 2023 [ʟᴜᴄᴋʏ ᴡᴏʀʟᴅ](https://t.me/{SUPPORT_CHAT}), ᴀʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.
+""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="◁", callback_data="fallen_back")]]
+            ),
         )
 
 
@@ -918,8 +948,11 @@ def main():
     about_callback_handler = CallbackQueryHandler(
         Fallen_about_callback, pattern=r"fallen_"
     )
-    source_callback_handler = CallbackQueryHandler(
+    Music_callback_handler = CallbackQueryHandler(
         Music_about_callback, pattern=r"Music_"
+    )
+    source_callback_handler = CallbackQueryHandler(
+        source_about_callback, pattern=r"source_"
     )
 
     donate_handler = CommandHandler("donate", donate)
@@ -929,6 +962,7 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
+    dispatcher.add_handler(Music_callback_handler)
     dispatcher.add_handler(source_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
